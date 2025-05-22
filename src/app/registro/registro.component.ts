@@ -1,13 +1,12 @@
 import { Component } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
+import { RouterLink } from '@angular/router';
 
-// PrimeNG modules
+import { CardModule } from 'primeng/card';
 import { InputTextModule } from 'primeng/inputtext';
 import { PasswordModule } from 'primeng/password';
 import { ButtonModule } from 'primeng/button';
-import { CardModule } from 'primeng/card';
-
 import { AuthService } from '../core/services/auth.service';
 
 @Component({
@@ -16,10 +15,11 @@ import { AuthService } from '../core/services/auth.service';
   imports: [
     CommonModule,
     FormsModule,
+    RouterLink,
+    CardModule,
     InputTextModule,
     PasswordModule,
-    ButtonModule,
-    CardModule
+    ButtonModule
   ],
   templateUrl: './registro.component.html',
   styleUrls: ['./registro.component.css']
@@ -44,8 +44,8 @@ export class RegistroComponent {
       password: this.password,
       confirmPassword: this.confirmPassword
     }).subscribe({
-      next: () => alert('Usuario registrado correctamente'),
-      error: (err) => alert(err.error?.mensaje || 'Error en el registro')
+      next: () => alert('✅ Usuario registrado correctamente'),
+      error: (err) => alert(err.error?.mensaje || '❌ Error en el registro')
     });
   }
 }
