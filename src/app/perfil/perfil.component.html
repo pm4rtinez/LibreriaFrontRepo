@@ -1,0 +1,43 @@
+<div class="perfil-container">
+  <h2>MI PERFIL</h2>
+
+  <div class="perfil-box">
+    <div class="perfil-header">
+      <div class="imagen-box">
+        <img [src]="usuario.imagen" alt="avatar" />
+      </div>
+      <div class="info-box">
+        <h3>INFORMACIÓN PERSONAL</h3>
+        <p><strong>Nombre:</strong> {{ usuario.nombre }}</p>
+        <p><strong>Correo electrónico:</strong> {{ usuario.correo }}</p>
+        <p><strong>Dirección:</strong> {{ usuario.direccion }}</p>
+      </div>
+      <div class="credito-box">
+        <p><strong>CRÉDITO:</strong> {{ usuario.credito }} €</p>
+        <button (click)="anadirCredito()">AÑADIR CRÉDITO</button>
+      </div>
+    </div>
+
+    <h3 class="tabla-titulo">RESERVAS DE LIBROS</h3>
+    <div class="tabla-container">
+      <table>
+        <thead>
+          <tr>
+            <th>Título</th>
+            <th>Fecha Reserva</th>
+            <th>Días Restantes</th>
+            <th>Estado de la Reserva</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let r of reservas">
+            <td>{{ r.tituloLibro }}</td>
+            <td>{{ r.fechaReserva | date : "dd/MM/yyyy" }}</td>
+            <td>{{ calcularDiasRestantes(r.fechaLimite) }}</td>
+            <td>{{r.estadoReserva | estadoReservaTexto}}</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>

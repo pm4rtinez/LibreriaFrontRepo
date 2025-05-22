@@ -1,0 +1,54 @@
+.contenedor-biblioteca {
+  padding: 2rem;
+  background-color: #f8f9fb;
+}
+
+.titulo {
+  text-align: center;
+  font-size: 2rem;
+  margin-bottom: 2rem;
+  color: #222;
+}
+
+.tabs {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+}
+
+.tabs button {
+  padding: 0.6rem 1.4rem;
+  font-weight: bold;
+  background-color: #ddd;
+  border: none;
+  border-radius: 25px;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.tabs button.activo {
+  background-color: #007bff;
+  color: white;
+}
+
+.tabla-scroll {
+  overflow-x: auto;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  background-color: white;
+}
+
+th {
+  background-color: #e9ecef;
+  text-align: left;
+  padding: 0.8rem;
+}
+
+td {
+  padding: 0.6rem;
+  border-bottom: 1px solid #ddd;
+}

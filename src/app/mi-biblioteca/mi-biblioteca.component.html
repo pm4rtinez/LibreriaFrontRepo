@@ -1,0 +1,48 @@
+<div class="contenedor-biblioteca">
+  <h2 class="titulo">MI BIBLIOTECA</h2>
+
+  <div class="tabs">
+    <button (click)="tabActivo = 'reservas'" [class.activo]="tabActivo === 'reservas'">RESERVAS</button>
+    <button (click)="tabActivo = 'compras'" [class.activo]="tabActivo === 'compras'">COMPRAS</button>
+  </div>
+
+  <div *ngIf="tabActivo === 'reservas'" class="tabla-scroll">
+    <table>
+      <thead>
+        <tr>
+          <th>Título</th>
+          <th>Fecha Reserva</th>
+          <th>Fecha Devolución</th>
+          <th>Estado</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let reserva of reservas">
+          <td>{{ reserva.titulo }}</td>
+          <td>{{ reserva.fechaReserva }}</td>
+          <td>{{ reserva.fechaDevolucion }}</td>
+          <td>{{ reserva.estado }}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div *ngIf="tabActivo === 'compras'" class="tabla-scroll">
+    <table>
+      <thead>
+        <tr>
+          <th>Título</th>
+          <th>Fecha Compra</th>
+          <th>Precio</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let compra of compras">
+          <td>{{ compra.titulo }}</td>
+          <td>{{ compra.fechaCompra }}</td>
+          <td>{{ compra.precio }}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

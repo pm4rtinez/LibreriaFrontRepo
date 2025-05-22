@@ -1,0 +1,13 @@
+<header class="menu-header">
+  <button class="hamburguesa" (click)="toggleMenu()">☰</button>
+</header>
+
+<nav class="menu-lateral" [class.abierto]="menuAbierto">
+  <ul>
+    <li><a routerLink="/comprar" (click)="cerrarMenu()">📚 Comprar/Reservar</a></li>
+    <li><a routerLink="/perfil" (click)="cerrarMenu()">👤 Mi Perfil</a></li>
+    <li><a routerLink="/biblioteca" (click)="cerrarMenu()">📖 Mi Biblioteca</a></li>
+    <li><a routerLink="/login" (click)="cerrarMenu()">🚪 Cerrar Sesión</a></li>
+
+  </ul>
+</nav>

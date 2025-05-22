@@ -1,0 +1,80 @@
+<div class="comprar-container">
+  <app-menu></app-menu>
+
+  <div class="contenido">
+    <h1 class="titulo">COMPRAR Y RESERVAR LIBROS</h1>
+
+    <!-- Tabs centrados -->
+    <div class="tabs-container">
+      <button
+        class="tab"
+        [class.activo]="tab === 'comprar'"
+        (click)="tab = 'comprar'"
+      >
+        Comprar
+      </button>
+      <button
+        class="tab"
+        [class.activo]="tab === 'reservar'"
+        (click)="tab = 'reservar'"
+      >
+        Reservar
+      </button>
+    </div>
+
+    <!-- Filtros -->
+    <div class="filtros">
+      <input
+        type="text"
+        placeholder="Autor"
+        [(ngModel)]="autor"
+        (input)="aplicarFiltros()"
+      />
+      <input
+        type="text"
+        placeholder="Título"
+        [(ngModel)]="titulo"
+        (input)="aplicarFiltros()"
+      />
+      <input
+        type="number"
+        placeholder="Precio máximo"
+        [(ngModel)]="precio"
+        (input)="aplicarFiltros()"
+      />
+      <select [(ngModel)]="categoriaSeleccionada" (change)="aplicarFiltros()">
+        <option value="">Todas las Categorías</option>
+        <option *ngFor="let c of categorias" [value]="c.nombre">
+          {{ c.nombre }}
+        </option>
+      </select>
+      <label>
+        <input
+          type="checkbox"
+          [(ngModel)]="disponible"
+          (change)="aplicarFiltros()"
+        />
+        Disponible
+      </label>
+    </div>
+
+    <!-- Libros -->
+    <div class="libros-grid">
+      <div class="libro-card" *ngFor="let libro of librosFiltrados">
+        <img src="assets/libro.jpg" alt="Portada" />
+        <h3>{{ libro.Titulo }}</h3>
+        <p class="autor">{{ libro.Autor?.Nombre }}</p>
+        <p class="precio">{{ libro.Precio }} €</p>
+
+        <div class="acciones">
+          <button *ngIf="libro.Disponible" (click)="accion(libro)">
+            {{ tab === "comprar" ? "Comprar" : "Reservar" }}
+          </button>
+          <span *ngIf="!libro.Disponible" class="no-disponible"
+            >No disponible</span
+          >
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

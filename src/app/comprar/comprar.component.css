@@ -1,0 +1,116 @@
+.comprar-container {
+  display: flex;
+  min-height: 100vh;
+  background: #f8f9fb;
+}
+
+.contenido {
+  flex: 1;
+  padding: 2rem;
+}
+
+.titulo {
+  text-align: center;
+  font-size: 2.2rem;
+  margin-bottom: 2rem;
+  color: #222;
+}
+
+.tabs-container {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 2rem;
+  gap: 1rem;
+}
+
+.tab {
+  padding: 0.7rem 2rem;
+  border: 2px solid #007bff;
+  border-radius: 30px;
+  background-color: #fff;
+  color: #007bff;
+  font-weight: 600;
+  cursor: pointer;
+  transition: 0.3s ease;
+}
+
+.tab.activo {
+  background-color: #007bff;
+  color: #fff;
+}
+
+.filtros {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 1rem;
+  margin-bottom: 2rem;
+}
+
+.filtros input,
+.filtros select {
+  padding: 0.6rem 1rem;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+  width: 200px;
+  font-size: 1rem;
+}
+
+.libros-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  gap: 2rem;
+  padding: 1rem;
+}
+
+.libro-card {
+  background: #fff;
+  padding: 1.5rem;
+  border-radius: 12px;
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.08);
+  text-align: center;
+  transition: 0.2s ease;
+}
+
+.libro-card:hover {
+  transform: translateY(-5px);
+}
+
+.libro-card img {
+  width: 100px;
+  height: 140px;
+  object-fit: cover;
+  border-radius: 8px;
+  margin-bottom: 1rem;
+}
+
+.libro-card h3 {
+  font-size: 1.1rem;
+  margin: 0.5rem 0;
+}
+
+.libro-card .autor {
+  color: #555;
+  font-size: 0.95rem;
+}
+
+.libro-card .precio {
+  font-weight: bold;
+  color: #28a745;
+  margin: 0.5rem 0;
+}
+
+.acciones button {
+  background-color: #28a745;
+  border: none;
+  padding: 0.5rem 1.2rem;
+  border-radius: 6px;
+  color: white;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.no-disponible {
+  color: #dc3545;
+  font-weight: bold;
+}
