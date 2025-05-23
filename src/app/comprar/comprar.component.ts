@@ -18,6 +18,7 @@ import { LibroService } from '../core/services/libro.service';
 import { Categoria } from '../core/models/categoria';
 import { Autor } from '../core/models/autor';
 import { Libro } from '../core/models/libro';
+import { LibroPlano } from '../core/models/libroplano';
 
 @Component({
   selector: 'app-comprar',
@@ -47,14 +48,15 @@ export class ComprarComponent implements OnInit {
 
   categorias: Categoria[] = [];
   autores: Autor[] = [];
-  libros: Libro[] = [];
-  librosFiltrados: Libro[] = [];
+  libros: LibroPlano[] = [];
+  librosFiltrados: LibroPlano[] = [];
+
 
   constructor(
     private categoriaService: CategoriaService,
     private autorService: AutorService,
     private libroService: LibroService
-  ) {}
+  ) { }
 
   ngOnInit(): void {
     this.buscarLibros();
@@ -65,8 +67,8 @@ export class ComprarComponent implements OnInit {
 
     // Crear autor al iniciar
     this.autorService.crearAutor("Pablo123").subscribe({
-      next: () => console.log("✅ Autor creado"),
-      error: (error) => console.error("❌ No se pudo crear el autor", error)
+      next: () => console.log("Autor creado"),
+      error: (error) => console.error("No se pudo crear el autor", error)
     });
   }
 
@@ -82,15 +84,16 @@ export class ComprarComponent implements OnInit {
 
   aplicarFiltros(): void {
     this.librosFiltrados = this.libros.filter(libro =>
-      (!this.autor || libro.Autor.Nombre.toLowerCase().includes(this.autor.toLowerCase())) &&
-      (!this.titulo || libro.Titulo.toLowerCase().includes(this.titulo.toLowerCase())) &&
-      (!this.precio || libro.Precio <= +this.precio) &&
-      (!this.categoriaSeleccionada || libro.Categoria.nombre === this.categoriaSeleccionada) &&
-      (!this.disponible || libro.Disponible)
+      (!this.autor || libro.autor.toLowerCase().includes(this.autor.toLowerCase())) &&
+      (!this.titulo || libro.titulo.toLowerCase().includes(this.titulo.toLowerCase())) &&
+      (!this.precio || libro.precio <= +this.precio) &&
+      (!this.categoriaSeleccionada || libro.categoria === this.categoriaSeleccionada) &&
+      (!this.disponible || libro.disponible)
     );
   }
 
-  accion(libro: Libro): void {
-    alert(`${this.tab === 'comprar' ? '📘 Comprado' : '📖 Reservado'}: ${libro.Titulo}`);
+
+  accion(libro: LibroPlano): void {
+    alert(`${this.tab === 'comprar' ? 'Comprado' : 'Reservado'}: ${libro.titulo}`);
   }
 }

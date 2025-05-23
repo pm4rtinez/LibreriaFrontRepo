@@ -61,16 +61,16 @@
     <!-- Libros -->
     <div class="libros-grid">
       <div class="libro-card" *ngFor="let libro of librosFiltrados">
-        <img src="assets/libro.jpg" alt="Portada" />
-        <h3>{{ libro.Titulo }}</h3>
-        <p class="autor">{{ libro.Autor?.Nombre }}</p>
-        <p class="precio">{{ libro.Precio }} €</p>
+        <div class="portada-libro"></div>
+        <h3>{{ libro.titulo }}</h3>
+        <p class="autor">{{ libro.autor }}</p>
+        <p class="precio">{{ libro.precio }} €</p>
 
         <div class="acciones">
-          <button *ngIf="libro.Disponible" (click)="accion(libro)">
+          <button *ngIf="libro.disponible" (click)="accion(libro)">
             {{ tab === "comprar" ? "Comprar" : "Reservar" }}
           </button>
-          <span *ngIf="!libro.Disponible" class="no-disponible"
+          <span *ngIf="!libro.disponible" class="no-disponible"
             >No disponible</span
           >
         </div>
